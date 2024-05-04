@@ -1,0 +1,48 @@
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv('C:/Users/Hp/Downloads/txn.txt', sep=',', header=None)
+df.columns = ['oid', 'date', 'cusno', 'quantity', 'category', 'product', 'state', 'country', 'paymode']
+print(df)
+print("*"*100)
+df1 = df.count()
+print(df1)
+print("*"*100)
+df2 = df.loc[(df['date'] <= '01-31-2011') & (df['date'] >= '01-01-2011')] \
+    [['oid', 'cusno', 'category', 'product', 'state']].count()
+print(df2)
+print("*"*100)
+df3 = df.loc[(df['date'] <= '07-31-2011') & (df['date'] >= '07-01-2011')] \
+      [['oid', 'cusno', 'category', 'product', 'state']].count()
+print(df3)
+print("*"*100)
+df4 = df.groupby('category')['category'].count().sort_values(ascending=False)
+print(df4)
+print("*"*100)
+df5 = df.loc[df['category'] == 'Outdoor Recreation']
+print(df5)
+print("*"*100)
+df6 = df.groupby('paymode')['paymode'].count()
+print(df6)
+print("*"*100)
+df7 = df.loc[(df['date'] >= '01-01-2011') & (df['date'] <= '07-31-2011')][['quantity']].count()
+print(df7)
+print("*"*100)
+df8 = df.groupby('category')['quantity'].sum()
+print(df8)
+print("*"*100)
+df9 = df.groupby('category')['quantity'].max()
+print(df9)
+print("*"*100)
+df10 = df.groupby('category')['quantity'].mean()
+print(df10)
+print("*"*100)
+df11 = df.groupby('paymode')['quantity'].sum()
+print(df11)
+print("*"*100)
+df12 = df.loc[df['category'] == 'Indoor Games'] \
+         .groupby('category')['category'].count()
+print(df12)
+print("*"*100)
+df13 = df.groupby('state')['state'].count()
+print(df13)

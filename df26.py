@@ -1,0 +1,15 @@
+import numpy as np
+import pandas as pd
+df = pd.read_csv('C:/Users/Hp/Downloads/heart_missing.csv',sep=',')
+print(df)
+print("*"*100)
+print(df.isna().sum())
+print("*"*100)
+df['cp'].fillna(1,inplace=True)
+df['fbs'].fillna(0,inplace=True)
+df['restecg'].fillna(1,inplace=True)
+df['oldpeak'].fillna(3.2,inplace=True)
+print(df)
+print("*"*100)
+print(df.isna().sum())
+print("*"*100)
